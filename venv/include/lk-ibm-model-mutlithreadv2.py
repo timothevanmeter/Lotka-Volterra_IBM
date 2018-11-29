@@ -154,7 +154,7 @@ def simulation(data, q):
     q.put(data)
 
 
-# SAVE SIMULATION DATA
+# SAVE SIMULATION DATA TO CSV FILE
 def store(q):
     # prey = pd.DataFrame(rabbitData)
     # predator = pd.DataFrame(foxData)
