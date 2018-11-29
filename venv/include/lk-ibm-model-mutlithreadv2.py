@@ -6,7 +6,7 @@
 # 	Timothe Van Meter (timothevanmeter.github.io)
 
 
-import pylab as pl
+# import pylab as pl
 import random as rd
 import scipy as SP
 import numpy as np
@@ -49,11 +49,11 @@ foxBackgroundMortality = 0.03
 collisionDistance = 10
 
 # WORKING DIRECTORY
-home = '/home/timothe/WORK/community_ecology/python-code/'
+home = '/home/timothe/WORK/lk-ibm-model/'
 
 # INITIALIZING THE CSV FILE
 data_sim = pd.DataFrame(columns=['parameter_value', 'predator_minimum', 'predator_maximum'])
-initcsv = data_sim.to_csv('/home/timothe/WORK/community_ecology/python-code/sim_summary.csv', header=True)
+initcsv = data_sim.to_csv('/home/timothe/WORK/lk-ibm-model/sim_summary.csv', header=True)
 initcsv
 
 
@@ -61,10 +61,10 @@ initcsv
 # INITIALIZING AGENTS TABLES
 rabbits = []
 foxes = []
-for i in xrange(initialRabbitPopulation):
+for i in range(initialRabbitPopulation):
     rabbits.append([rd.uniform(0, width), rd.uniform(0, height)])
 
-for i in xrange(initialFoxPopulation):
+for i in range(initialFoxPopulation):
     foxes.append([rd.uniform(0, width), rd.uniform(0, height), 0])
 rabbitData = [initialRabbitPopulation]
 foxData = [initialFoxPopulation]
@@ -79,7 +79,7 @@ def simulation(data, q):
     # INITIALIZING RANDOM SEED
     rd.seed()
 
-    for t in xrange(maxTime):
+    for t in range(maxTime):
 
             # simulate random motion
             for ag in rabbits:
@@ -95,14 +95,14 @@ def simulation(data, q):
                 ag[1] = clip(ag[1], 0, height)
 
             # detect collision and change state
-            for i in xrange(len(foxes)):
+            for i in range(len(foxes)):
                 foxes[i][2] += 1  # fox's hunger level increasing
-                for j in xrange(len(rabbits)):
+                for j in range(len(rabbits)):
                     if rabbits[j] != toBeRemoved:
                         if (foxes[i][0] - rabbits[j][0]) ** 2 + (foxes[i][1] - rabbits[j][1]) ** 2 < CDsquared:
                             foxes[i][2] = 0  # fox ate rabbit and hunger level reset to 0
                             rabbits[j] = toBeRemoved  # rabbit eaten by fox
-                    # if RD.uniform(0, 1) < rabbitBackgroundMortality:
+                    # if rd.uniform(0, 1) < rabbitBackgroundMortality:
                     # rabbits[j] = toBeRemoved  # rabbit bakground motality ***ADDED***
                 if rd.uniform(0, 1) < foxBackgroundMortality:  # fox background mortality ***ADDED***
                     # if foxes[i][2] > foxHungerLimit:
@@ -131,12 +131,12 @@ def simulation(data, q):
             # As soon as this criteria is violated the simulation is discarded
 
             # produce offspring
-            for i in xrange(len(rabbits)):
+            for i in range(len(rabbits)):
                 if rd.random() < rabbitReproductionRate * (
                         1.0 - float(rabbitPopulation) / float(rabbitPopulationLimit)):
                     rabbits.append(rabbits[i][:])  # making and adding a copy of the parent
 
-            for i in xrange(len(foxes)):
+            for i in range(len(foxes)):
                 if foxes[i][2] == 0 and rd.random() < foxReproductionRate * (
                         1.0 - float(foxPopulation) / float(foxPopulationLimit)):
                     foxes.append(foxes[i][:])  # making and adding a copy of the parent
@@ -174,7 +174,7 @@ def store(q):
     ################
     # SIMULATIONS SUMMARY
     dat = q.get()
-    summarycsv = dat.to_csv('/home/timothe/WORK/community_ecology/python-code/sim_summary.csv', mode='a', header=False)
+    summarycsv = dat.to_csv('/home/timothe/WORK/lk-ibm-model//sim_summary.csv', mode='a', header=False)
     summarycsv
 
 
@@ -212,8 +212,8 @@ for initialFoxPopulation in range(10, 12, 1):
         pl.plot(foxData, color='brown')
         pl.title('Populations')
         pl.hold(False)
-
-        fig.canvas.manager.window.update()
+    #
+    #     fig.canvas.manager.window.update()
     # visualize(rabbits, foxes, 0)
 
     CDsquared = collisionDistance ** 2
@@ -242,7 +242,7 @@ for initialFoxPopulation in range(10, 12, 1):
 
     # CREATES AND STARTS AS MANY PROCESSES AS SIMULATION REPLICATES
     # HERE, 5 REPLICATES PER SIMULATION
-    for i in range(5):
+    for i in range(10):
         proc1 = Process(target=simulation, args=(data_sim, q))
         proc2 = Process(target=store, args=(q,))
         procs.append(proc1)
