@@ -12,10 +12,22 @@ dR/dt = r<sub>R</sub> ( 1 - R/K<sub>R</sub>) - &alpha;RP </p>
 dP/dt = r<sub>P</sub> ( 1 - P/K<sub>P</sub>) -m
 </p>
 
-With K<sub>R</sub> and K<sub>P</sub> the carrying capacities of espectively the prey and predator. The term &alpha;RP corresponds to the predation term and m is the intrinsec mortality for the predator.
+With r<sub>R</sub> and r<sub>P</sub> the respective reproduction rate for the  K<sub>R</sub> and K<sub>P</sub> the carrying capacities of espectively the prey and predator. The term &alpha;RP corresponds to the predation term and m is the intrinsec mortality for the predator.
 
 ### Initialisation
 The Individual-Based Model even though it ressembles the above described system is fondamentaly different because individuals are directly modelled on a spatially explicit 100x100 grid. All simulations are initialized placing all prey and predator individuals on the grid using an uniform distribution, ~ U<sup>2</sup> (0, max grid height) (0, max grid width).
+
+### Model Structure
+For each time step in the Individual-Based Model those actions are performed:
+- All individuals disperse across the grid
+- All possible predation events are resolved across the grid
+- Dead individuals, from predation and background mortality, are removed from the grid
+- All reproduction events are resolved
+
+### Reproduction
+The reproduction events are modelled by a random sampling between 0 and 1. The condition for a successfull reproduction event is:
+<p align="center">r<sub>X</sub> ( 1 - X/K<sub>X</sub> ) > random</p>
+With X being either the prey or predator.
 
 ### Predation
 Predation events are defined by the variable called ```collisionDistance``` that sets the minimum distance for which predation can occur.
@@ -24,8 +36,15 @@ If the distance between a predator and a prey is less than the square of the val
 
 with D = ```collisionDistance```<sup>2</sup>
 
-### Movements of Individuals
+### Dispersion of Individuals
 Every individuals move according the a single parameter, ```NoiseLevel```, which corresponds to their dispersal ability. For each time step each individual moves from its current position with a value obtained from a gaussian distribution ~ N (O, ```NoiseLevel```). The borders of the grid are limiting: individuals moving beyond the maximum height and width are kept at the limits of the grid.
+
+
+
+
+
+
+
 
 
 
