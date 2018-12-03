@@ -29,6 +29,11 @@ The reproduction events are modelled by a random sampling between 0 and 1. The c
 <p align="center">r<sub>X</sub> ( 1 - X/K<sub>X</sub> ) > random</p>
 With X being either the prey or predator.
 
+### Background Mortality
+Background Mortality is only included in the model for the predator with the term m, as showed in the equations system above. This is implemented in the model as follow: a random number from a uniform distribution, ~ U (0,1), is drawed and compared to the value of the ```BackgroundMortality``` variable. Therefore a predator dies under the condition:
+<p align="center"> BackgroundMortality > random</p>
+
+
 ### Predation
 Predation events are defined by the variable called ```collisionDistance``` that sets the minimum distance for which predation can occur.
 If the distance between a predator and a prey is less than the square of the value of ```collisionDistance``` a predation event occurs:
