@@ -2,4 +2,5 @@
 
 ## The Individual-Based Model
 
-r_{R} \cdot (1 - \frac{R(t)}{R_{lim})
+Y = &alpha; + &beta;<sub>i</sub> X<sub>i</sub> + &beta;<sub>2</sub> X<sub>2</sub> + &beta;<sub>3</sub> X<sub>3</sub> + ... + &beta;<sub>k</sub> X<sub>k</sub> + &epsilon;
+})
