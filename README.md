@@ -1,4 +1,5 @@
 # Community Ecology Semester Project
 
-## The Individaul-Based Model
+## The Individual-Based Model
 
+r_{R} \cdot (1 - \frac{R(t)}{R_{lim})
