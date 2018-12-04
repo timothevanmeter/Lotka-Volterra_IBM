@@ -2,7 +2,7 @@
 
 ## The Individual-Based Model
 
-The model used here is modified from the [predatorpreywithplot.py](https://sourceforge.net/projects/pycx/files/PyCX-0.1/) file of the [PyCX Project](http://pycx.sourceforge.net/) compiled with Python 2.7.
+The model used here is modified from the [predatorpreywithplot.py](https://sourceforge.net/projects/pycx/files/PyCX-0.1/) file of the [PyCX Project](http://pycx.sourceforge.net/) compiled with Python 2.7. The code from the predatorpreywithplot.py file has been modified in several ways, but mainly to enable parallel computing of the simulations using the python **multiprocessing** library.
 
 The system modeled presents two species R, the resource and P, the predator. The system dynamics can be written as follows:
 
@@ -60,6 +60,14 @@ Every individuals move according the a single parameter, ```NoiseLevel```, which
 | Dispersal Ability | Predator | 16 |
 | Background Mortality Rate | Predator | 0.03 |
 | Minimum Predation Distance | Predator | 8 |
+
+
+## Tools
+
+### Gnuplot Visualisation Help
+This [gnuplot script](/files/gnuplot) produces the below graph to help determine if coexistence is achieved giving a certain parameter value, here the predator's initial population number. This script uses the output of the [simulations summary tables](/files/sim_summary_fox_initpop1.csv)
+
+![huhu](predator_init2.png)
 
 
 ## TO DO
