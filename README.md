@@ -44,6 +44,27 @@ with D = ```collisionDistance```<sup>2</sup>
 ### Dispersion of Individuals
 Every individuals move according the a single parameter, ```NoiseLevel```, which corresponds to their dispersal ability. For each time step each individual moves from its current position with a value obtained from a gaussian distribution ~ N (O, ```NoiseLevel```). The borders of the grid are limiting: individuals moving beyond the maximum height and width are kept at the limits of the grid.
 
+### Parameter Complete Table
+| Name    | Category           | Default Value  |
+| ------------- |:-------------:| -----:|
+| Width | Environment | 1000 |
+| Height | Environment | 1000 |
+| Maximum Time Step | Simulation | 500 |
+| Initial Population | Prey | 500 |
+| Reproduction Rate | Prey | 0.3 |
+| Population Limit (K) | Prey | 1000 |
+| Dispersal Ability | Prey | 8 |
+| Initial Population | Predator | 300 |
+| Reproduction Rate | Predator | 0.3 |
+| Population Limit (K) | Predator | 1000 |
+| Dispersal Ability | Predator | 15 |
+| Background Mortality Rate | Predator | 0.03 |
+| Minimum Predation Distance | Predator | 10 |
+
+
+
+
+
 
 
 
