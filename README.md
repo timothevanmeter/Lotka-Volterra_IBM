@@ -47,20 +47,36 @@ Every individuals move according the a single parameter, ```NoiseLevel```, which
 ### Parameter Complete Table
 | Name    | Category           | Default Value  |
 | ------------- |:-------------:| -----:|
-| Width | Environment | 1000 |
-| Height | Environment | 1000 |
-| Maximum Time Step | Simulation | 500 |
+| Width | Environment | 250 |
+| Height | Environment | 250 |
+| Maximum Time Step | Simulation | 1000 |
 | Initial Population | Prey | 500 |
 | Reproduction Rate | Prey | 0.3 |
-| Population Limit (K) | Prey | 1000 |
+| Population Limit (K) | Prey | 500 |
 | Dispersal Ability | Prey | 8 |
-| Initial Population | Predator | 300 |
+| Initial Population | Predator | 100 |
 | Reproduction Rate | Predator | 0.3 |
-| Population Limit (K) | Predator | 1000 |
-| Dispersal Ability | Predator | 15 |
+| Population Limit (K) | Predator | 500 |
+| Dispersal Ability | Predator | 16 |
 | Background Mortality Rate | Predator | 0.03 |
-| Minimum Predation Distance | Predator | 10 |
+| Minimum Predation Distance | Predator | 8 |
 
+
+## TO DO
+
+### The Equivalent ODE System
+Modifying the ODE system presented in the special case of K<sub>R</sub> = K<sub>P</sub>, r<sub>R</sub> = r<sub>P</sub> and m = r<sub>P</sub>/10 yields the following conditions for stabiltiy:
+
+- Show how this simplification changes the theoretical stability of the system.
+
+### Invasibility of the System
+Run simulations with low initial prey population and verify that theoretical invasibility criteria are or not violated.
+
+### Spatial Aggregation
+
+- Find a metric for spatial aggregation of prey individuals
+- Test it and make a visual verification of consistency
+- Include it in the simulations output
 
 
 
