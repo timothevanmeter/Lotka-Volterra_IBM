@@ -69,6 +69,12 @@ This [gnuplot script](/files/gnuplot) produces the below graph to help determine
 
 ![huhu](predator_init2.png)
 
+### Aggregation Index
+This model is used to investigate how aggregation of prey individuals can modify the atbility of the system. To measure aggregation on the spatial grid we implement the **aggregation index**, **AI**, defined as follow:
+<p align="center"> AI = [g<sub>ii</sub> / max(g<sub>ii</sub>) ] 100</p>
+
+With g<sub>ii</sub> and max(g<sub>ii</sub>)
+
 
 ## TO DO
 
