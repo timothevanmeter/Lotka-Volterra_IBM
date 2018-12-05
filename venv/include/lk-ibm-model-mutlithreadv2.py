@@ -20,40 +20,40 @@ from multiprocessing import Process, Queue
 # set parameters
 
 # ENVIRONMENT DIMENSIONS
-width = 1000
-height = 1000
+width = 250
+height = 250
 # SIMULATION TIME
-maxTime = 50
+maxTime = 1000
 
 # PREYS
-initialRabbitPopulation = 500
+initialRabbitPopulation = 300
 rabbitReproductionRate = 0.3
 # EQUIVALENT TO K
-rabbitPopulationLimit = 1000
+rabbitPopulationLimit = 500
 # EXPLANATION?
-rabbitNoiseLevel = 8
+rabbitNoiseLevel = 4
 # rabbitBackgroundMortality = 0.05
 
 # PREDATORS
-initialFoxPopulation = 300
+initialFoxPopulation = 100
 foxReproductionRate = 0.3
 # EQUIVALENT TO K
-foxPopulationLimit = 1000
+foxPopulationLimit = 500
 #
-foxNoiseLevel = 15
+foxNoiseLevel = 8
 # foxHungerLimit = 30
 foxBackgroundMortality = 0.03
 
 # PREDATION PARAMETERS
 # MINIMUM DISTANCE FOR WHICH A PREDATION EVENT CAN OCCUR
-collisionDistance = 10
+collisionDistance = 8
 
 # WORKING DIRECTORY
-home = '/home/timothe/WORK/lk-ibm-model/'
+home = '/home/timothe/WORK/lk-ibm-model/simulations_initpop/'
 
 # INITIALIZING THE CSV FILE
-data_sim = pd.DataFrame(columns=['parameter_value', 'predator_minimum', 'predator_maximum'])
-initcsv = data_sim.to_csv('/home/timothe/WORK/lk-ibm-model/sim_summary.csv', header=True)
+data_sim = pd.DataFrame(columns=['parameter_value', 'prey_minimum', 'predator_minimum'])
+initcsv = data_sim.to_csv('/home/timothe/WORK/lk-ibm-model/simulations_initpop/sim_summary_fox_initpop2.csv', header=True)
 initcsv
 
 
@@ -145,10 +145,25 @@ def simulation(data, q):
             foxData.append(len(foxes))
 
     # SHOWS DATA TO STDOUT
-    print("\n\n FoxMin = " +str(min(foxData))+ " ; FoxMax = " + str(max(foxData)))
+    print("\n\n Prey_Min = " +str(min(rabbitData))+ " ; Predator_Min = " + str(min(foxData)))
+
+    # prey = pd.DataFrame(rabbitData)
+    # predator = pd.DataFrame(foxData)
+    # # p1csv = prey.to_csv('/home/timothe/WORK/lk-ibm-model/simulations_initpop/prey.csv')
+    # # p1csv
+    # # p2csv = predator.to_csv('/home/timotheWORK/lk-ibm-model/simulations_initpop/predator.csv')
+    # # p2csv
+    # # merge dataframes
+    # sim = pd.concat([prey, predator], axis=1)
+    # sim.columns = ['prey_number', 'predator_number']
+    # # EXPORT OUTPUT TO CSV
+    # name = 'sim_' + str(initialFoxPopulation)
+    # path_name = '/home/timothe/WORK/lk-ibm-model/simulations_initpop/' + name + '.csv'
+    # csv = sim.to_csv(path_name)
+    # csv
 
     # SAVES SIMULATION SUMMARY IN DATA
-    data.loc[i] = [initialFoxPopulation, min(foxData), max(foxData)]
+    data.loc[i] = [initialFoxPopulation, min(rabbitData), min(foxData)]
 
     # PUSH DATA IN THE QUEUE
     q.put(data)
@@ -156,31 +171,16 @@ def simulation(data, q):
 
 # SAVE SIMULATION DATA TO CSV FILE
 def store(q):
-    # prey = pd.DataFrame(rabbitData)
-    # predator = pd.DataFrame(foxData)
-    # # p1csv = prey.to_csv('/home/timothe/WORK/community_ecology/python-code/prey.csv')
-    # # p1csv
-    # # p2csv = predator.to_csv('/home/timothe/WORK/community_ecology/python-code/predator.csv')
-    # # p2csv
-    # # merge dataframes
-    # sim = pd.concat([prey, predator], axis=1)
-    # sim.columns = ['prey_number', 'predator_number']
-    # # EXPORT OUTPUT TO CSV
-    # name = 'sim_'+ str(initialFoxPopulation)
-    # path_name = home + name + '.csv'
-    # csv = sim.to_csv(path_name)
-    # csv
-
     ################
     # SIMULATIONS SUMMARY
     dat = q.get()
-    summarycsv = dat.to_csv('/home/timothe/WORK/lk-ibm-model//sim_summary.csv', mode='a', header=False)
+    summarycsv = dat.to_csv('/home/timothe/WORK/lk-ibm-model/simulations_initpop/sim_summary_fox_initpop2.csv', mode='a', header=False)
     summarycsv
 
 
 
 # LOOP FOR PARAMETER 1
-for initialFoxPopulation in range(10, 12, 1):
+for initialFoxPopulation in range(10, 100, 10):
 
     # VISUALIZE AGENTS
     # pl.ion()
@@ -242,7 +242,7 @@ for initialFoxPopulation in range(10, 12, 1):
 
     # CREATES AND STARTS AS MANY PROCESSES AS SIMULATION REPLICATES
     # HERE, 5 REPLICATES PER SIMULATION
-    for i in range(10):
+    for i in range(40):
         proc1 = Process(target=simulation, args=(data_sim, q))
         proc2 = Process(target=store, args=(q,))
         procs.append(proc1)
