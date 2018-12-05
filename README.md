@@ -69,7 +69,10 @@ This [gnuplot script](/files/gnuplot) produces the below graph to help determine
 ![huhu](predator_init2.png)
 
 ### Grid Visualisation Help
-The python matplotlib library contains the [imshow function](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imshow.html) which is able to plot the grid for each simulation time step and verify visually aggregation and other spatial patterns. the ```plot.grid()``` utility should also be considered.
+DONE IN GNUPLOT
+
+![huhu](/files/animate.gif)
+
 
 ### Aggregation Index
 This model is used to investigate how aggregation of prey individuals can modify the atbility of the system. To measure aggregation on the spatial grid we implement the **aggregation index**, **AI**, defined as follow:
