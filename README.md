@@ -66,9 +66,10 @@ Every individuals move according the a single parameter, ```NoiseLevel```, which
 
 ### Gnuplot Visualisation Help
 This [gnuplot script](/files/gnuplot) produces the below graph to help determine if coexistence is achieved giving a certain parameter value, here the predator's initial population number. This script uses the output of the [simulations summary tables](/files/sim_summary_fox_initpop1.csv)
-<p align="center">
 ![huhu](predator_init2.png)
-</p>
+
+### Grid Visualisation Help
+The python matplotlib library contains the [imshow function](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imshow.html) which is able to plot the grid for each simulation time step and verify visually aggregation and other spatial patterns.
 
 ### Aggregation Index
 This model is used to investigate how aggregation of prey individuals can modify the atbility of the system. To measure aggregation on the spatial grid we implement the **aggregation index**, **AI**, defined as follow:
