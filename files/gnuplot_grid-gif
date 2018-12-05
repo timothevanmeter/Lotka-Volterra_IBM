@@ -1,0 +1,11 @@
+
+# CREATES GIF animations for each time step of the grid simulation
+
+reset
+set term gif animate delay 100
+set output "animate.gif"
+n=9    #n frames
+# dt=2*pi/n
+i=0
+load "/home/timothe/PycharmProjects/lk-ibm-project/files/gif.gp"
+set output
