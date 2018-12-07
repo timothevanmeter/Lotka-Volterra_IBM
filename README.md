@@ -1,5 +1,19 @@
 # Community Ecology Semester Project
 
+## Introduction
+
+
+
+### Table of contents
+
+- [The Individual-Based Model used for simulations](#The-Individual-Based-Model)
+- [The IBM Results](#Results-1)
+- [The Equivalent ODE System](#The-Equivalent-ODE-System)
+- [The ODE Results](#Results-2)
+- [Comparison](#Comparison)
+- [Tools and Supporting Information](#Tools)
+
+
 ## The Individual-Based Model
 
 The model used here is modified from the [predatorpreywithplot.py](https://sourceforge.net/projects/pycx/files/PyCX-0.1/) file of the [PyCX Project](http://pycx.sourceforge.net/) compiled with Python 2.7. The code from the predatorpreywithplot.py file has been modified in several ways, but mainly to enable parallel computing of the simulations using the python **multiprocessing** library.
@@ -55,6 +69,34 @@ For the predator there is an additional condition for a reproduction event to oc
 This rule corresponds to energy limitation, there is a limited pool of energy that can be allocated to anything other than survival, as reproduction, so the individuals need to have enough energy or prey biomass consumed to be able to attempt a reproduction event.
 
 
+
+## Results 1
+
+
+
+
+## The Equivalent ODE System
+
+The system modeled presents two species R, the resource and P, the predator. The system dynamics can be written as follows:
+
+<p align="center">
+dR/dt = r<sub>R</sub> ( 1 - R/K<sub>R</sub>) - &alpha;RP </p>
+<p align="center">
+dP/dt = r<sub>P</sub>&alpha;RP ( 1 - P/K<sub>P</sub>) -m
+</p>
+
+With r<sub>R</sub> and r<sub>P</sub> the respective reproduction rate, K<sub>R</sub> and K<sub>P</sub> the carrying capacities of respectively the prey and predator. The term &alpha;RP corresponds to the predation term which is present in the prey's equation, each predation event depletes the prey population, and in the predator's equation, the predator individuals in order to reproduce need to have enough energy that is to have consumed a prey not long before. The term m is the intrinsec background mortality for the predator.
+
+
+
+## Results 2
+
+
+
+## Comparison
+
+
+
 ## Tools
 
 ### Gnuplot Visualisation Help
@@ -73,21 +115,6 @@ This model is used to investigate how aggregation of prey individuals can modify
 
 With g<sub>ii</sub> and max(g<sub>ii</sub>)
 
-
-
-
-
-## The Equivalent ODE System
-
-The system modeled presents two species R, the resource and P, the predator. The system dynamics can be written as follows:
-
-<p align="center">
-dR/dt = r<sub>R</sub> ( 1 - R/K<sub>R</sub>) - &alpha;RP </p>
-<p align="center">
-dP/dt = r<sub>P</sub>&alpha;RP ( 1 - P/K<sub>P</sub>) -m
-</p>
-
-With r<sub>R</sub> and r<sub>P</sub> the respective reproduction rate, K<sub>R</sub> and K<sub>P</sub> the carrying capacities of respectively the prey and predator. The term &alpha;RP corresponds to the predation term which is present in the prey's equation, each predation event depletes the prey population, and in the predator's equation, the predator individuals in order to reproduce need to have enough energy that is to have consumed a prey not long before. The term m is the intrinsec background mortality for the predator.
 
 
 
