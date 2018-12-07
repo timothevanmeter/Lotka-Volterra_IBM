@@ -9,33 +9,10 @@ The Individual-Based Model even though it ressembles the above described system 
 
 ### Model Structure
 For each time step in the Individual-Based Model those actions are performed:
-- All individuals disperse across the grid
-- All possible predation events are resolved across the grid
-- Dead individuals, from predation and background mortality, are removed from the grid
-- All reproduction events are resolved
-
-### Reproduction
-The reproduction events are modelled by a random sampling between 0 and 1. The condition for a successfull reproduction event is:
-<p align="center">r<sub>X</sub> ( 1 - X/K<sub>X</sub> ) > random</p>
-With X being either the prey or predator.
-For the predator there is an additional condition for a reproduction event to occur: the predator is able to reproduce only after a successful predation event. This is why the reproduction rate is scaled by the predation term, &alpha;RP, for the predator's dyanmics.
-This rule corresponds to energy limitation, there is a limited pool of energy that can be allocated to anything other than survival, as reproduction, so the individuals need to have enough energy or prey biomass consumed to be able to attempt a reproduction event.
-
-### Background Mortality
-Background Mortality is only included in the model for the predator with the term m, as showed in the equations system above. This is implemented in the model as follow: a random number from a uniform distribution, ~ U (0,1), is drawed and compared to the value of the ```BackgroundMortality``` variable. Therefore a predator dies under the condition:
-<p align="center"> BackgroundMortality > random</p>
-
-
-### Predation
-Predation events are defined by the variable called ```collisionDistance``` that sets the maximum distance for which predation can occur.
-If the distance between a predator and a prey is less than the square of the value of ```collisionDistance``` a predation event occurs:
-<p align="center">(x<sub>R</sub> - x<sub>P</sub>)<sup>2</sup> + (y<sub>R</sub> - y<sub>P</sub>)<sup>2</sup> < D</p>
-
-with D = ```collisionDistance```<sup>2</sup>
-For one time step a predator will consume all the prey individuals within his reach.
-
-### Dispersion of Individuals
-Every individuals move according the a single parameter, ```NoiseLevel```, which corresponds to their dispersal ability. For each time step each individual moves from its current position with a value obtained from a gaussian distribution ~ N (O, ```NoiseLevel```). The borders of the grid are limiting: individuals moving beyond the maximum height and width are kept at the limits of the grid.
+- All individuals disperse across the grid [Dispersion](#Dispersion-of-Individuals)
+- All possible predation events are resolved across the grid [Predation](#Predation)
+- Dead individuals, from predation and background mortality, are removed from the grid [Background Mortality](#Background-Mortality)
+- All reproduction events are resolved [Reproduction](#Reproduction)
 
 ### Parameter Complete Table
 | Name    | Category           | Default Value  |
@@ -53,6 +30,29 @@ Every individuals move according the a single parameter, ```NoiseLevel```, which
 | Dispersal Ability | Predator | 16 |
 | Background Mortality Rate | Predator | 0.03 |
 | Minimum Predation Distance | Predator | 8 |
+
+
+### Dispersion of Individuals
+Every individuals move according the a single parameter, ```NoiseLevel```, which corresponds to their dispersal ability. For each time step each individual moves from its current position with a value obtained from a gaussian distribution ~ N (O, ```NoiseLevel```). The borders of the grid are limiting: individuals moving beyond the maximum height and width are kept at the limits of the grid.
+
+### Predation
+Predation events are defined by the variable called ```collisionDistance``` that sets the maximum distance for which predation can occur.
+If the distance between a predator and a prey is less than the square of the value of ```collisionDistance``` a predation event occurs:
+<p align="center">(x<sub>R</sub> - x<sub>P</sub>)<sup>2</sup> + (y<sub>R</sub> - y<sub>P</sub>)<sup>2</sup> < D</p>
+
+with D = ```collisionDistance```<sup>2</sup>
+For one time step a predator will consume all the prey individuals within his reach.
+
+### Background Mortality
+Background Mortality is only included in the model for the predator with the term m, as showed in the equations system above. This is implemented in the model as follow: a random number from a uniform distribution, ~ U (0,1), is drawed and compared to the value of the ```BackgroundMortality``` variable. Therefore a predator dies under the condition:
+<p align="center"> BackgroundMortality > random</p>
+
+### Reproduction
+The reproduction events are modelled by a random sampling between 0 and 1. The condition for a successfull reproduction event is:
+<p align="center">r<sub>X</sub> ( 1 - X/K<sub>X</sub> ) > random</p>
+With X being either the prey or predator.
+For the predator there is an additional condition for a reproduction event to occur: the predator is able to reproduce only after a successful predation event. This is why the reproduction rate is scaled by the predation term, &alpha;RP, for the predator's dyanmics.
+This rule corresponds to energy limitation, there is a limited pool of energy that can be allocated to anything other than survival, as reproduction, so the individuals need to have enough energy or prey biomass consumed to be able to attempt a reproduction event.
 
 
 ## Tools
