@@ -127,6 +127,9 @@ With g<sub>ii</sub> and max(g<sub>ii</sub>)
 
 ## TO DO
 
+### FIGURES
+REMOVE ALL TITLES AND KEYS FOR THE GNUPLOT FIGURES, EXLPAIN THOSE DIRECTLY IN THE LATEX CAPTIONS!!!
+
 ### The Equivalent ODE System
 Modifying the ODE system presented in the special case of K<sub>R</sub> = K<sub>P</sub>, r<sub>R</sub> = r<sub>P</sub> and m = r<sub>P</sub>/10 yields the following conditions for stabiltiy:
 
