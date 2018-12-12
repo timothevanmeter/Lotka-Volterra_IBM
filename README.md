@@ -121,7 +121,11 @@ This model is used to investigate how aggregation of prey individuals can modify
 
 With g<sub>ii</sub> and max(g<sub>ii</sub>)
 
+### Density of Individuals
+Since the model simulates individuals not in a discrete grid, but in a continuous environment (x,y) the aggregation index is not measurable in this case. Instead we measure the density of individuals in the environment as an approximation for their aggregation. The python script used to calculate density is available [here](/venv/include/density.py).
+Here is an example of the result obtained:
 
+![huhu](/files/density.png)
 
 
 
