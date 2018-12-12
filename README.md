@@ -15,8 +15,8 @@ This statement can be true for bacteria in aquatic system with frequent turbulen
 - [The Individual-Based Model used for simulations](#The-Individual-Based-Model)
 - [The IBM Results](#Results-1)
 - [The Equivalent ODE System](#The-Equivalent-ODE-System)
-- [The ODE Results](#Results-2)
-- [Comparison](#Comparison)
+<!-- [The ODE Results](#Results-2)
+- [Comparison](#Comparison)-->
 - [Tools and Supporting Information](#Tools)
 
 
@@ -47,9 +47,9 @@ For each time step in the Individual-Based Model those actions are performed:
 | Initial Population | Predator | 100 |
 | Reproduction Rate | Predator | 0.3 |
 | Population Limit (K) | Predator | 500 |
-| Dispersal Ability | Predator | 16 |
+| Dispersal Ability | Predator | 8 |
 | Background Mortality Rate | Predator | 0.03 |
-| Minimum Predation Distance | Predator | 8 |
+| Minimum Predation Distance | Predator | 3 |
 
 
 ### Dispersion of Individuals
@@ -94,15 +94,6 @@ dP/dt = r<sub>P</sub>&alpha;RP ( 1 - P/K<sub>P</sub>) -m
 With r<sub>R</sub> and r<sub>P</sub> the respective reproduction rate, K<sub>R</sub> and K<sub>P</sub> the carrying capacities of respectively the prey and predator. The term &alpha;RP corresponds to the predation term which is present in the prey's equation, each predation event depletes the prey population, and in the predator's equation, the predator individuals in order to reproduce need to have enough energy that is to have consumed a prey not long before. The term m is the intrinsec background mortality for the predator.
 
 
-
-## Results 2
-
-
-
-## Comparison
-
-
-
 ## Tools
 
 ### Gnuplot Visualisation Help
@@ -115,11 +106,11 @@ DONE IN GNUPLOT
 ![huhu](/files/animate.gif)
 
 
-### Aggregation Index
+<!--### Aggregation Index
 This model is used to investigate how aggregation of prey individuals can modify the atbility of the system. To measure aggregation on the spatial grid we implement the **aggregation index**, **AI**, defined as follow:
 <p align="center"> AI = [g<sub>ii</sub> / max(g<sub>ii</sub>) ] 100</p>
 
-With g<sub>ii</sub> and max(g<sub>ii</sub>)
+<!--With g<sub>ii</sub> and max(g<sub>ii</sub>)-->
 
 ### Density of Individuals
 Since the model simulates individuals not in a discrete grid, but in a continuous environment (x,y) the aggregation index is not measurable in this case. Instead we measure the density of individuals in the environment as an approximation for their aggregation. The python script used to calculate density is available [here](/venv/include/density.py).
@@ -133,22 +124,3 @@ Here is an example of the result obtained:
 
 ### FIGURES
 **REMOVE ALL TITLES AND KEYS FOR THE GNUPLOT FIGURES, EXLPAIN THOSE DIRECTLY IN THE LATEX CAPTIONS!!!**
-
-### The Equivalent ODE System
-Modifying the ODE system presented in the special case of K<sub>R</sub> = K<sub>P</sub>, r<sub>R</sub> = r<sub>P</sub> and m = r<sub>P</sub>/10 yields the following conditions for stabiltiy:
-
-- Show how this simplification changes the theoretical stability of the system.
-
-### Invasibility of the System
-Run simulations with low initial prey population and verify that theoretical invasibility criteria are or not violated.
-
-### Spatial Aggregation
-
-- Find a metric for spatial aggregation of prey individuals
-- Test it and make a visual verification of consistency
-- Include it in the simulations output
-
-
-
-
-
