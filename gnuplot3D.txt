@@ -1,0 +1,16 @@
+
+
+
+set datafile separator ","
+set xlabel 'Initial Resource Number'
+set ylabel 'Initial Predator Number' rotate by 20
+set zlabel 'Minimum number of individuals' rotate by 90
+
+
+splot 'sim_summary_fox_initpop5.csv' u 1:2:6 t'', '' u 1:2:4 t''
+
+
+set terminal pngcairo font "Helvetica, 12"
+set output "initpop5_predator.png"
+
+splot 'sim_summary_fox_initpop5.csv' u 1:2:6 t'', '' u 1:2:4 t''

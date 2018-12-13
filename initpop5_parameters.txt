@@ -1,0 +1,26 @@
+# ENVIRONMENT DIMENSIONS
+width = 250
+height = 250
+# SIMULATION TIME
+maxTime = 1000
+
+# PREYS
+rabbitReproductionRate = 0.3
+# EQUIVALENT TO K
+rabbitPopulationLimit = 500
+# EXPLANATION?
+rabbitNoiseLevel = 8
+# rabbitBackgroundMortality = 0.05
+
+# PREDATORS
+foxReproductionRate = 0.3
+# EQUIVALENT TO K
+foxPopulationLimit = 500
+#
+foxNoiseLevel = 8
+# foxHungerLimit = 30
+foxBackgroundMortality = 0.03
+
+# PREDATION PARAMETERS
+# MINIMUM DISTANCE FOR WHICH A PREDATION EVENT CAN OCCUR
+collisionDistance = 3
