@@ -73,7 +73,6 @@ This [gnuplot script](/files/gnuplot) produces the below graph to help determine
 ![huhu](predator_init2.png)
 
 ### Grid Visualisation Help
-DONE IN GNUPLOT
 
 ![huhu](/files/animate.gif)
 
