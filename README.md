@@ -9,6 +9,7 @@
  [The ODE Results](#Results-2)
 - [Comparison](#Comparison)-->
 - [Tools and Supporting Information](#Tools)
+- [Project's Manuscript](#Manuscript)
 
 
 ## The Individual-Based Model
@@ -88,5 +89,9 @@ Since the model simulates individuals not in a discrete grid, but in a continuou
 Here is an example of the result obtained:
 
 ![huhu](density.png)
+
+## Manuscript
+
+[Here](/report/ECEV42600_VANMETER.pdf) can be found the manuscript that was written for this project.
 
 
